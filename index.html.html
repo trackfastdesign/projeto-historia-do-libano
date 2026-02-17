@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História do Líbano - Cronologia Interativa</title>
+    <!-- Tailwind CSS para o visual -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para os ícones -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .era-content {
+            display: none;
+        }
+
+        .era-content.active {
+            display: block;
+        }
+
+        .btn-era.active {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ef4444;
+            transform: translateX(8px);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm p-4">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-6 bg-red-600 rounded flex items-center justify-center">
+                    <div class="w-3 h-3 bg-green-700 rotate-45"></div>
+                </div>
+                <h1 class="text-xl font-black uppercase tracking-tighter">Líbano: História</h1>
+            </div>
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden sm:block">
+                Resiliência • Cultura • Milênios
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6 md:p-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-4 tracking-tighter">A FÊNIX DO ORIENTE</h2>
+            <p class="text-gray-500 max-w-xl mx-auto italic">"Um povo que se reconstrói sobre as glórias e desafios de
+                cinco mil anos."</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <!-- Menu Lateral -->
+            <div class="lg:col-span-4 space-y-3" id="menu-eras">
+                <!-- Botões gerados via JS -->
+            </div>
+
+            <!-- Painel de Detalhes -->
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden min-h-[500px]"
+                    id="display-era">
+                    <!-- Conteúdo gerado via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 text-center text-gray-400 text-xs font-bold uppercase tracking-widest">
+        © Projeto Educativo - História do Líbano
+    </footer>
+
+    <script>
+        const historyData = [
+            { id: 0, era: "Antiguidade Fenícia", period: "3000 a.C. - 333 a.C.", color: "bg-blue-600", icon: "anchor", desc: "Mestres dos mares, os fenícios criaram o primeiro alfabeto fonético em Biblos e Tiro." },
+            { id: 1, era: "Domínio Romano", period: "64 a.C. - 395 d.C.", color: "bg-amber-600", icon: "landmark", desc: "A era da Pax Romana e a construção dos templos monumentais de Baalbek, os maiores do império." },
+            { id: 2, era: "Era das Cruzadas", period: "1099 - 1291", color: "bg-red-700", icon: "sword", desc: "O Líbano foi palco de batalhas entre cruzados e mamelucos, deixando castelos imponentes na costa." },
+            { id: 3, era: "Império Otomano", period: "1516 - 1918", color: "bg-emerald-600", icon: "scroll", desc: "Quatro séculos de integração. O Emir Fakhreddine II lançou as bases do Líbano moderno e autônomo." },
+            { id: 4, era: "A Suíça do Oriente", period: "1943 - 1974", color: "bg-red-500", icon: "flag", desc: "Após a independência, Beirute tornou-se o centro financeiro e cultural mais vibrante do mundo árabe." },
+            { id: 5, era: "Resiliência Moderna", period: "1975 - Hoje", color: "bg-zinc-800", icon: "shield", desc: "Apesar de guerras e crises, a alma libanesa permanece inquebrável, focada na reconstrução e na cultura." }
+        ];
+
+        function render() {
+            const menu = document.getElementById('menu-eras');
+            menu.innerHTML = historyData.map((data, i) => `
+                <button onclick="selectEra(${i})" class="btn-era w-full flex items-center p-5 rounded-2xl transition-all duration-300 opacity-60 bg-gray-200/50 hover:bg-gray-200 ${i === activeIndex ? 'active' : ''}">
+                    <div class="p-2 rounded-lg mr-4 text-white ${data.color}"><i data-lucide="${data.icon}"></i></div>
+                    <div class="text-left">
+                        <div class="text-[10px] font-black text-gray-400 uppercase">${data.period}</div>
+                        <div class="font-bold text-gray-800">${data.era}</div>
+                    </div>
+                </button>
+            `).join('');
+
+            const display = document.getElementById('display-era');
+            const active = historyData[activeIndex];
+            display.innerHTML = `
+                <div class="p-10 text-white ${active.color} transition-colors duration-500">
+                    <span class="text-xs font-black uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full border border-white/20">${active.period}</span>
+                    <h3 class="text-4xl md:text-5xl font-black mt-6 tracking-tighter">${active.era}</h3>
+                </div>
+                <div class="p-10 md:p-14">
+                    <p class="text-xl md:text-2xl text-gray-600 leading-relaxed italic font-medium">"${active.desc}"</p>
+                    <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
+                        <div class="flex gap-4 text-gray-300">
+                             <i data-lucide="map"></i>
+                             <i data-lucide="compass"></i>
+                        </div>
+                        <span class="text-[10px] font-black text-gray-300 uppercase tracking-[0.3em]">Patrimônio Vivo</span>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        let activeIndex = 0;
+        function selectEra(index) {
+            activeIndex = index;
+            render();
+        }
+
+        // Inicialização
+        window.onload = render;
+    </script>
+</body>
+
+</html>
