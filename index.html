@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História do Líbano - Cronologia Interativa</title>
+    <!-- Tailwind CSS para o visual -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .era-content {
+            display: none;
+        }
+
+        .era-content.active {
+            display: block;
+        }
+
+        .btn-era.active {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ef4444;
+            transform: translateX(8px);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm p-4">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-6 bg-red-600 rounded flex items-center justify-center">
+                    <div class="w-3 h-3 bg-green-700 rotate-45"></div>
+                </div>
+                <h1 class="text-xl font-black uppercase tracking-tighter">Líbano: História</h1>
+            </div>
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden sm:block">
+                Resiliência • Cultura • Milênios
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6 md:p-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-4 tracking-tighter">A FÊNIX DO ORIENTE</h2>
+            <p class="text-gray-500 max-w-xl mx-auto italic">"Um povo que se reconstrói sobre as glórias e desafios de
+                cinco mil anos."</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <!-- Menu Lateral -->
+            <div class="lg:col-span-4 space-y-3" id="menu-eras">
+                <!-- Botões gerados via JS -->
+            </div>
+
+            <!-- Painel de Detalhes -->
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden min-h-[500px]"
+                    id="display-era">
+                    <!-- Conteúdo gerado via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 text-center text-gray-400 text-xs font-bold uppercase tracking-widest">
+        © Projeto Educativo - História do Líbano
+    </footer>
+
+    <script>
+        const historyData = [
+{ 
+                id: 0, 
+                era: "Antiguidade Fenícia", 
+                period: "3000 a.C. - 333 a.C.", 
+                color: "bg-blue-600", 
+                icon: "anchor", 
+                desc: "Mestres dos mares, os fenícios criaram o primeiro alfabeto fonético em Biblos e Tiro.",
+                fullText: `
+                    <p>A civilização fenícia, estabelecida na estreita faixa costeira do Levante, onde hoje se localiza o Líbano, representa um dos pilares mais extraordinários do comércio, da navegação e da transferência cultural no mundo antigo. Encurralados entre a imponência da cordilheira do Líbano e a vastidão do Mar Mediterrâneo, os antigos habitantes desta região transformaram o isolamento geográfico numa plataforma de projeção global. Diante da escassez de terras agrícolas extensas, voltaram-se para o oceano, utilizando a sua riqueza natural mais célebre: os densos e majestosos bosques de Cedro do Líbano, cuja madeira leve, resistente e incorruptível era ideal para a construção naval de alta performance.</p>
+                    
+                    <p>Diferente dos impérios centralizados do Egito ou da Mesopotâmia, a Fenícia nunca funcionou como um Estado unificado sob um único monarca. Em vez disso, organizava-se como uma confederação de cidades-estado independentes, sendo Biblos, Sídon, Tiro e Arwad as mais proeminentes. Cada uma destas metrópoles possuía os seus próprios reis, frotas, divindades tutelares e redes comerciais. Embora competissem ferozmente pelo domínio dos mercados, estas cidades partilhavam a mesma língua, tradições religiosas, avanços tecnológicos e, acima de tudo, uma identidade cultural baseada na diplomacia mercantil em detrimento da conquista militar expansionista.</p>
+                    
+                    <p>Biblos, conhecida localmente como Gubal, consolidou-se como o mais antigo e vital centro de comércio religioso e de exportação de madeira para o Egito faraónico. A sua ligação profunda com o Vale do Nilo era tão intensa que influenciou a arquitetura, a arte e os ritos fenícios. Foi através de Biblos que o papiro egípcio foi introduzido no mundo grego, uma transação mercantil tão marcante que a própria palavra grega para livro — e, consequentemente, o termo 'Bíblia' — deriva do nome da cidade libanesa. Sídon, por sua vez, destacou-se pela maestria na metalurgia fina e na inovação da manufatura de vidro translúcido, cujos segredos químicos e técnicas de sopro eram guardados de forma quase sagrada corporativamente.</p>
+                    
+                    <p>No entanto, foi a cidade de Tiro que alcançou a supremacia marítima e colonial mais duradoura. Originalmente fundada como um assentamento continental, Tiro expandiu-se para uma ilha rochosa fortificada a pouca distância da costa, tornando-se praticamente inexpugnável frente aos exércitos terrestres. Os marinheiros tiros ousaram navegar para além dos limites conhecidos, cruzando o Estreito de Gibraltar e alcançando as costas atlânticas da Europa e de África. Sob o patrocínio do Rei Hiram I, contemporâneo e aliado dos reis israelitas David e Salomão, Tiro financiou expedições conjuntas que trouxeram ouro, prata e pedras preciosas de portos distantes, além de fornecer os arquitetos e os materiais essenciais para a construção do Primeiro Templo de Jerusalém.</p>
+                    
+                    <p>A expansão fenícia resultou na fundação de centenas de feitorias e colónias estrategicamente localizadas ao longo do Mediterrâneo, incluindo bases permanentes na Sicília, na Sardenha, em Chipre e na Península Ibérica, onde fundaram Cádis (Gadir). A colónia mais célebre, Cartago, localizada no norte de África, foi fundada por exilados de Tiro liderados pela lendária Rainha Dido. Cartago cresceria até se transformar numa superpotência mediterrânica por direito próprio, rivalizando diretamente com a República Romana séculos mais tarde. Através desta imensa rede colonial, os fenícios funcionaram como os grandes globalizadores da antiguidade, ligando as civilizações do Próximo Oriente às culturas em desenvolvimento na Europa Ocidental.</p>
+                    
+                    <p>Além da perícia naval, a economia fenícia era impulsionada por um monopólio industrial altamente lucrativo: a produção da púrpura de Tiro. Este corante têxtil, que variava entre o vermelho-escuro e o violeta profundo, era extraído através de um processo laborioso de fermentação de milhares de moluscos marinhos conhecidos como Murex. Devido à sua raridade, durabilidade e brilho inalterável ao sol, a seda e a lã tingidas em Tiro tornaram-se o maior símbolo de estatuto, luxo e realeza no mundo antigo, vestindo imperadores, reis e sumos sacerdotes de Roma à Pérsia, gerando fluxos contínuos de metais preciosos para os cofres fenícios.</p>
+                    
+                    <p>Apesar de todas as riquezas materiais, o legado mais revolucionário e duradouro da civilização fenícia foi, sem dúvida, a criação do alfabeto fonético por volta do século XII a.C. Até então, os sistemas de escrita predominantes — como os hieróglifos egípcios e os caracteres cuneiformes mesopotâmicos — eram extremamente complexos, compostos por centenas de pictogramas e ideogramas cujo domínio era restrito a elites de escribas profissionais. Motivados pela urgência prática de registar transações comerciais, contratos e inventários de mercadorias de forma rápida e eficiente, os fenícios sintetizaram o sistema para apenas 22 sinais puramente fonéticos, onde cada símbolo representava um som consonantal básico.</p>
+                    
+                    <p>Por ser um sistema simples, intuitivo e de fácil aprendizagem, a escrita deixou de ser um segredo de Estado ou um privilégio religioso e democratizou-se. À medida que os navios fenícios singravam os mares, levavam consigo não apenas mercadorias, mas também este novo código de comunicação. O alfabeto fenício foi adotado e modificado pelos gregos, que introduziram as vogais, passando posteriormente para os etruscos e romanos, dando origem direta ao alfabeto latino que utilizamos hoje. Assim, cada palavra escrita na sociedade moderna carrega consigo a herança direta dos engenhosos comerciantes que habitavam a costa do Líbano há três milénios.</p>
+                    
+                    <p>A autonomia das cidades-estado fenícias enfrentou sérios desafios a partir do século VIII a.C., quando potências expansionistas vizinhas começaram a exigir tributos exorbitantes. O Líbano fenício foi sucessivamente ocupado pelos exércitos assírio, neobabilónico e persa aqueménida. Sob o domínio persa, os fenícios mantiveram uma autonomia interna considerável e as suas frotas navais formaram o núcleo central da marinha do Império Persa durante as famosas Guerras Médicas contra as cidades gregas. A era propriamente fenícia chega ao seu encerramento político definitivo em 333 a.C., com as campanhas de Alexandre, o Grande. Enquanto cidades como Biblos se renderam pacificamente ao conquistador macedónio, Tiro resistiu num cerco épico de sete meses que culminou na construção de um istmo artificial por Alexandre, alterando para sempre a geografia da região e integrando o Líbano no mundo helenístico.</p>
+                `
+            },
+          { 
+                id: 1, 
+                era: "Domínio Romano", 
+                period: "64 a.C. - 395 d.C.", 
+                color: "bg-amber-600", 
+                icon: "landmark", 
+                desc: "A era da Pax Romana e a construção dos templos monumentais de Baalbek, os maiores do império.",
+                fullText: `
+                    <p>A conquista do Levante pelo general romano Pompeu marcou o início de uma longa era de estabilidade, integração arquitetônica e prosperidade econômica. Sob o manto da <em>Pax Romana</em>, o território que hoje é o Líbano deixou de ser um campo de batalha de impérios vizinhos e tornou-se um dos polos culturais e comerciais mais vibrantes do Império Romano do Oriente.</p>
+                    <p>A prova mais colossal deste período encontra-se no Vale do Bekaa, na antiga Heliópolis (hoje Baalbek). Ali, os imperadores romanos ergueram um complexo de templos de proporções titânicas, dedicado à Tríade Heliopolitana (Júpiter, Vênus e Baco). O Templo de Júpiter foi o maior templo religioso de todo o Império Romano. As fundações de Baalbek abrigam o 'Trilithon', três pedras maciças pesando cerca de 800 toneladas cada, cujo método de transporte intriga engenheiros até hoje. Este esforço arquitetônico monumental servia para demonstrar o poderio e a divindade de Roma no Oriente.</p>
+                    <p>Enquanto Baalbek era o centro espiritual, a cidade costeira de Berytus (Beirute) tornou-se a capital intelectual. Berytus abrigou a mais prestigiosa Escola de Direito do Império Romano. Durante mais de três séculos, os maiores juristas do mundo antigo formaram-se lá. Dois de seus professores mais ilustres, Papiniano e Ulpiano, redigiram grande parte do material que mais tarde formaria o Código de Justiniano, a base do direito civil moderno ocidental.</p>
+                    <p>A economia prosperava intensamente com a construção de grandes estradas romanas pavimentadas, aquedutos e banhos públicos, enquanto os famosos vinhos, azeites e sedas libanesas fluíam com segurança e abundância por todo o Mediterrâneo.</p>
+                `
+            },
+            { 
+                id: 2, 
+                era: "Era das Cruzadas", 
+                period: "1099 - 1291", 
+                color: "bg-red-700", 
+                icon: "sword", 
+                desc: "O Líbano foi palco de batalhas entre cruzados e mamelucos, deixando castelos imponentes na costa.",
+                fullText: `
+                    <p>No final do século XI, os exércitos europeus chegaram ao Oriente Médio movidos pelo zelo religioso de reconquistar a Terra Santa, inaugurando um período de dois séculos de confrontos sangrentos e intensa troca cultural. A costa libanesa, com os seus portos estratégicos, tornou-se o corredor vital de abastecimento para os reinos cruzados (Reino de Jerusalém e o Condado de Trípoli).</p>
+                    <p>Durante este período, o Líbano foi severamente fortificado. A arquitetura militar europeia mesclou-se com técnicas de alvenaria bizantinas e árabes. Castelos imponentes foram erguidos para controlar as vias costeiras e as montanhas. O Castelo do Mar, construído pelos cruzados numa ilha ligada à cidade de Sídon, e o impressionante Castelo de Biblos, construído com grandes blocos de pedra reaproveitados de antigas ruínas fenícias e romanas, são testemunhos silenciosos desta era militarizada.</p>
+                    <p>Uma das consequências sociais mais duradouras das Cruzadas foi a aproximação entre os europeus (conhecidos como francos) e os Cristãos Maronitas, que habitavam as áreas escarpadas da Cordilheira do Líbano. Os Maronitas forneceram guias experientes, arqueiros e suprimentos aos cruzados, estabelecendo uma aliança formal que culminou com a união oficial da Igreja Maronita com Roma (o Papado) no século XII. Esta conexão estabeleceu os laços culturais, políticos e educacionais entre o Líbano e a Europa, especialmente a França, que perduram até a modernidade.</p>
+                    <p>O domínio europeu desmoronou no final do século XIII sob o avanço implacável dos Mamelucos do Egito, que destruíram sistematicamente os portos e os pomares da costa libanesa para evitar que os exércitos cruzados pudessem ancorar e se reabastecer no futuro.</p>
+                `
+            },
+            { 
+                id: 3, 
+                era: "Império Otomano", 
+                period: "1516 - 1918", 
+                color: "bg-emerald-600", 
+                icon: "scroll", 
+                desc: "Quatro séculos de integração. O Emir Fakhreddine II lançou as bases do Líbano moderno e autônomo.",
+                fullText: `
+                    <p>A vitória das tropas do Sultão Selim I em 1516 integrou o Líbano no vasto Império Otomano por exatos 400 anos. Diferente de outras províncias, a topografia montanhosa do Líbano permitiu que os seus habitantes mantivessem uma independência de facto. Em troca do pagamento regular de impostos (o 'Miri'), os otomanos concederam o direito de autogoverno a dinastias locais, criando o Emirado do Monte Líbano.</p>
+                    <p>A figura mais extraordinária deste período foi o Emir Fakhreddine II (1572–1635), da dinastia Drusa dos Ma'n. Reconhecido como o "Pai do Líbano Moderno", ele expandiu o território desde Alepo até às fronteiras de Jerusalém, criando um proto-estado tolerante onde cristãos, drusos, muçulmanos e judeus conviviam e cooperavam livremente. O Emir estimulou a economia, construiu palácios renascentistas e, numa jogada audaciosa, firmou tratados comerciais diretos com o Grão-Ducado da Toscana, na Itália, enviando estudantes libaneses para a Europa.</p>
+                    <p>No século XIX, sob o Emir Bashir Shihab II, a economia libanesa floresceu baseada na produção de seda. As encostas das montanhas foram transformadas num mar verde de amoreiras (para alimentar os bichos-da-seda). A seda crua libanesa tornou-se altamente cobiçada pelos teares das indústrias em Lyon, na França, gerando a primeira grande era capitalista da região e o surgimento de uma rica burguesia mercantil em Beirute.</p>
+                    <p>A paz foi tragicamente rompida pelos massacres sectários de 1860. Em resposta, as potências europeias intervieram e obrigaram o Império Otomano a criar a *Mutasarrifiya*, uma província autônoma cristã com garantias internacionais. Este arranjo político delineou os contornos administrativos e a identidade nacional que dariam origem à República Libanesa do século XX.</p>
+                `
+            },
+            { 
+                id: 4, 
+                era: "A Suíça do Oriente", 
+                period: "1943 - 1974", 
+                color: "bg-red-500", 
+                icon: "flag", 
+                desc: "Após a independência, Beirute tornou-se o centro financeiro e cultural mais vibrante do mundo árabe.",
+                fullText: `
+                    <p>O Líbano declarou a sua independência da França em novembro de 1943, baseada num acordo não escrito inovador conhecido como o Pacto Nacional. Este acordo distribuiu o poder político de forma proporcional entre as várias confissões religiosas do país (um presidente Cristão Maronita, um primeiro-ministro Muçulmano Sunita e um presidente do parlamento Muçulmano Xiita), estabelecendo uma fórmula de convivência plural num Oriente Médio em convulsão.</p>
+                    <p>O período que se seguiu é frequentemente lembrado com nostalgia como a "Era de Ouro" do Líbano. Adotando uma economia de livre mercado extremamente aberta num momento em que a maioria dos países vizinhos se fechava sob regimes socialistas e militarizados, o Líbano prosperou. Em 1956, aprovou a famosa Lei do Sigilo Bancário. Num ápice, Beirute tornou-se o principal porto seguro para as gigantescas fortunas provenientes do boom do petróleo árabe, valendo-lhe o título de "A Suíça do Oriente".</p>
+                    <p>O dinheiro financiou uma explosão cultural e imobiliária sem precedentes. Beirute transformou-se no centro nevrálgico do jornalismo livre, do setor editorial, das artes, da moda e da aviação comercial. A sua capital era famosa pelos glamorosos hotéis, cassinos e vida noturna requintada que atraíam a elite global, de estrelas de Hollywood a líderes políticos, que descansavam ao sol no Mediterrâneo e esquiavam nas montanhas na mesma tarde.</p>
+                    <p>Este milagre económico e cultural funcionava, no entanto, sobre uma linha de falha tectónica perigosa. A prosperidade não estava distribuída uniformemente, agravando as disparidades de classe nas periferias. Além disso, a instabilidade política dos países vizinhos, particularmente a chegada de centenas de milhares de refugiados palestinianos após 1948 e 1967, introduziu pressões geopolíticas que o delicado sistema confessional libanês não seria capaz de suportar por muito mais tempo.</p>
+                `
+            },
+            { 
+                id: 5, 
+                era: "Resiliência Moderna", 
+                period: "1975 - Hoje", 
+                color: "bg-zinc-800", 
+                icon: "shield", 
+                desc: "Apesar de guerras e crises, a alma libanesa permanece inquebrável, focada na reconstrução e na cultura.",
+                fullText: `
+                    <p>A ilusão de invulnerabilidade do Líbano ruiu em abril de 1975, quando as tensões internas e externas deflagraram uma Guerra Civil brutal que se prolongou por 15 anos (1975-1990). Beirute, outrora o playground do Oriente Médio, foi dividida por uma fatídica "Linha Verde" que separava as milícias inimigas, transformando edifícios luxuosos em ruínas esburacadas por atiradores. O conflito forçou uma emigração em massa, expandindo substancialmente a já vasta diáspora libanesa pelo mundo (incluindo o Brasil, que abriga milhões de descendentes).</p>
+                    <p>Com a assinatura do Acordo de Taif em 1989, as armas calaram-se. Sob a liderança controversa mas ambiciosa do Primeiro-Ministro Rafik Hariri, iniciou-se um dos projetos de reconstrução urbana mais espetaculares do mundo. O centro de Beirute (Solidere) reergueu-se das cinzas, misturando arquitetura ultramoderna, restauros do período otomano e a preservação de ruínas romanas escavadas, simbolizando o renascimento da Fênix.</p>
+                    <p>A modernidade libanesa contemporânea continua a ser uma montanha-russa de resiliência e tragédia. O país enfrentou o assassinato de Hariri em 2005 (que despoletou a Revolução dos Cedros pacífica), a devastadora guerra de julho de 2006, um colapso financeiro sem precedentes em 2019, e a apocalíptica explosão do porto de Beirute em agosto de 2020, uma das maiores explosões não-nucleares da história da humanidade.</p>
+                    <p>No entanto, a verdadeira narrativa da "Resiliência Moderna" não se resume à sucessão de crises, mas à força vital do povo libanês. Apesar da paralisia do Estado, a sociedade civil é das mais dinâmicas do mundo árabe. O design de moda libanês (com nomes como Elie Saab e Zuhair Murad) domina os tapetes vermelhos globais; a gastronomia espalha-se internacionalmente, e o cinema e a música continuam a produzir obras-primas. O Líbano de hoje sobrevive através do espírito comunitário, do amor à vida, e da recusa obstinada do seu povo em deixar que cinco mil anos de história desapareçam na escuridão.</p>
+                `
+            }
+        ];
+        function render() {
+            const menu = document.getElementById('menu-eras');
+            menu.innerHTML = historyData.map((data, i) => `
+                <button onclick="selectEra(${i})" class="btn-era w-full flex items-center p-5 rounded-2xl transition-all duration-300 opacity-60 bg-gray-200/50 hover:bg-gray-200 ${i === activeIndex ? 'active' : ''}">
+                    <div class="p-2 rounded-lg mr-4 text-white ${data.color}"><i data-lucide="${data.icon}"></i></div>
+                    <div class="text-left">
+                        <div class="text-[10px] font-black text-gray-400 uppercase">${data.period}</div>
+                        <div class="font-bold text-gray-800">${data.era}</div>
+                    </div>
+                </button>
+            `).join('');
+
+          const display = document.getElementById('display-era');
+            const active = historyData[activeIndex];
+            display.innerHTML = `
+                <div class="p-10 text-white ${active.color} transition-colors duration-500">
+                    <span class="text-xs font-black uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full border border-white/20">${active.period}</span>
+                    <h3 class="text-4xl md:text-5xl font-black mt-6 tracking-tighter">${active.era}</h3>
+                </div>
+                <div class="p-10 md:p-14">
+                    <div class="max-h-[350px] overflow-y-auto pr-4 text-gray-600 leading-relaxed font-medium">
+                        <div class="text-xl md:text-2xl italic mb-6">"${active.desc}"</div>
+                        <div class="text-base font-normal text-gray-500 space-y-4">
+                            ${active.fullText || ''}
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
+                        <div class="flex gap-4 text-gray-300">
+                             <i data-lucide="map"></i>
+                             <i data-lucide="compass"></i>
+                        </div>
+                        <span class="text-[10px] font-black text-gray-300 uppercase tracking-[0.3em]">Património Vivo</span>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        let activeIndex = 0;
+        function selectEra(index) {
+            activeIndex = index;
+            render();
+        }
+
+        // Inicialização
+        window.onload = render;
+    </script> <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</body>
+
+</html>
